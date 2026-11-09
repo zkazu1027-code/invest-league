@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>投資手法リーグ</title>
+<meta name="description" content="日本株の投資手法を仮想資金で毎日検証し、格付けS〜Dで公開。勝ちも負けも全部載せています。">
+<meta property="og:title" content="投資手法リーグ">
+<meta property="og:description" content="日本株の投資手法を仮想資金で毎日検証し、格付けS〜Dで公開。勝ちも負けも全部載せています。">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<style>
+:root{--bg:#f7f6f2;--card:#ffffff;--ink:#1d1f23;--sub:#5d636e;--line:#e3e1da;--accent:#1f4e79;
+--pos:#0f7a4a;--neg:#b3261e;--gS:#1f4e79;--gA:#2e7d6b;--gB:#7a7f87;--gC:#b7791f;--gD:#a33a3a;--chip:#eeece6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171b;--card:#1d2026;--ink:#e8e6e1;
+--sub:#a2a7b0;--line:#30343c;--accent:#8db8e3;--pos:#4cc38a;--neg:#f07b72;--chip:#272b32;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15171b;--card:#1d2026;--ink:#e8e6e1;--sub:#a2a7b0;--line:#30343c;--accent:#8db8e3;
+--pos:#4cc38a;--neg:#f07b72;--chip:#272b32;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 "Hiragino Sans","Yu Gothic UI","Yu Gothic",
+Meiryo,system-ui,sans-serif;padding:0 16px}
+a{color:var(--accent)}
+.wrap{max-width:980px;margin:0 auto;padding-block:8px 48px}
+header.site{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px;padding:18px 0 12px;
+border-bottom:1px solid var(--line);margin-bottom:20px}
+header.site .logo{font-weight:700;font-size:20px;color:var(--ink);text-decoration:none;letter-spacing:.04em}
+header.site .tag{color:var(--sub);font-size:13px}
+nav{display:flex;flex-wrap:wrap;gap:4px 16px;margin-left:auto}
+nav a{color:var(--sub);text-decoration:none;font-size:14px;padding:2px 0;border-bottom:2px solid transparent}
+nav a.on,nav a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+h1{font-size:24px;margin:8px 0 4px}h2{font-size:18px;margin:32px 0 10px}h3{font-size:16px;margin:20px 0 6px}
+p.lead{color:var(--sub);margin:0 0 16px}
+.note{background:var(--chip);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--sub);margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.kpi .k{font-size:12px;color:var(--sub)}.kpi .v{font-size:20px;font-weight:700}
+.tabs{display:flex;gap:6px;margin:8px 0 0;flex-wrap:wrap}
+.tabs button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--sub);
+border-radius:999px;padding:4px 12px;cursor:pointer}
+.tabs button.on{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.tbl{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card)}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th{font-size:12px;color:var(--sub);font-weight:600;background:var(--chip)}
+td.l,th.l{text-align:left}td.name{white-space:normal;min-width:9em}
+.pos{color:var(--pos)}.neg{color:var(--neg)}
+.grade{display:inline-block;min-width:1.8em;text-align:center;font-weight:700;border-radius:4px;color:#fff;
+padding:0 4px;font-size:13px}
+.gS{background:var(--gS)}.gA{background:var(--gA)}.gB{background:var(--gB)}.gC{background:var(--gC)}.gD{background:var(--gD)}
+.bench{font-weight:700}
+img.chart{width:100%;max-width:100%;border:1px solid var(--line);border-radius:10px;background:#fff}
+.meth{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.meth .card{margin:0}.meth .rule{font-size:13px;color:var(--sub);margin:4px 0 10px}
+.chip{display:inline-block;font-size:12px;background:var(--chip);border-radius:999px;padding:1px 10px;color:var(--sub)}
+.mini{width:100%;font-size:13px}.mini td,.mini th{padding:4px 6px}
+dl.gl dt{font-weight:700;margin-top:10px}dl.gl dd{margin:2px 0 0 0;color:var(--sub)}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--sub)}
+[hidden]{display:none!important}
+</style></head>
+<body><div class="wrap">
+<header class="site"><a class="logo" href="index.html">投資手法リーグ</a>
+<span class="tag">投資手法の格付け。勝ちも負けも全部公開</span><nav><a href="index.html" class=on>今日の格付け</a><a href="methods.html">手法一覧</a><a href="records.html">全取引の記録</a><a href="about.html">検証のルール</a></nav></header>
+
+<h1>今日の格付け</h1>
+<p class="lead">日本株の有名な投資手法を、同じ条件・仮想資金100万円ずつで毎日動かし、成績を公開しています。
+判断はその日の大引け後に記録し、翌営業日の寄り付きで約定したものとして計算します。未来の値は使いません。</p>
+<div class="kpis"><div class="kpi"><div class="k">集計日</div><div class="v">2026-11-09</div></div><div class="kpi"><div class="k">検証日数</div><div class="v">2営業日目</div></div><div class="kpi"><div class="k">開始日</div><div class="v">2026-11-06</div></div><div class="kpi"><div class="k">本戦1位（直近1か月）</div><div class="v">モメンタム上位5</div></div><div class="kpi"><div class="k">日経225放置（直近1か月）</div><div class="v">+1.0%</div></div></div>
+<h2>本戦</h2>
+<p class="lead">過去10年の検証で上位だった手法と、比べる基準の「日経225放置」。</p>
+<div class="tabs" data-group="lg_main"><button data-key="1m" class=on>直近1か月</button><button data-key="all">通算</button></div><div data-pane="lg_main" data-key="1m"><div class="tbl"><table><tr><th>順位</th><th>格付け</th><th class=l>手法</th><th>リターン</th><th>最大下落</th><th>点数</th><th>勝率</th><th>PF</th><th>決済数</th><th>日経225放置との差</th></tr><tr><td>1</td><td><span class="grade gS">S</span></td><td class='l name'><a href='methods.html#m15'>モメンタム上位5</a></td><td class='pos'>+3.9%</td><td>0.0%</td><td>3.91</td><td>-</td><td>-</td><td>0</td><td class='pos'>+2.9pt</td></tr><tr class="bench"><td>2</td><td><span class="grade gS">S</span></td><td class='l name'><a href='methods.html#m1'>日経225放置</a></td><td class='pos'>+1.0%</td><td>0.0%</td><td>0.97</td><td>-</td><td>-</td><td>0</td><td class=''>+0.0pt</td></tr><tr><td>3</td><td><span class="grade gA">A</span></td><td class='l name'><a href='methods.html#m2'>ゴールデンクロス</a></td><td class='pos'>+0.7%</td><td>0.0%</td><td>0.73</td><td>-</td><td>-</td><td>0</td><td class='neg'>-0.2pt</td></tr><tr><td>4</td><td><span class="grade gA">A</span></td><td class='l name'><a href='methods.html#m7'>20日高値ブレイク</a></td><td class='pos'>+0.3%</td><td>0.0%</td><td>0.31</td><td>-</td><td>-</td><td>0</td><td class='neg'>-0.7pt</td></tr><tr><td>5</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m8'>MACDクロス（0ライン上）</a></td><td class='pos'>+0.2%</td><td>0.0%</td><td>0.21</td><td>-</td><td>-</td><td>0</td><td class='neg'>-0.8pt</td></tr><tr><td>6</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m9'>一目均衡表 三役好転</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>6</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m11'>ストキャス売られすぎクロス</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>6</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m14'>決算後ドリフト</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>6</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m16'>52週高値更新</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>10</td><td><span class="grade gD">D</span></td><td class='l name'><a href='methods.html#m19'>前日高値ブレイク</a></td><td class='neg'>-0.3%</td><td>-0.3%</td><td>0.00</td><td>0%</td><td>0.00</td><td>1</td><td class='neg'>-1.2pt</td></tr></table></div><p class="note">太字は比べる基準の「日経225放置」。点数＝リターン÷最大下落（下落は最低1%として計算）。</p></div><div data-pane="lg_main" data-key="all" hidden><div class="tbl"><table><tr><th>順位</th><th>格付け</th><th class=l>手法</th><th>リターン</th><th>最大下落</th><th>点数</th><th>勝率</th><th>PF</th><th>決済数</th><th>日経225放置との差</th></tr><tr><td>1</td><td><span class="grade gS">S</span></td><td class='l name'><a href='methods.html#m15'>モメンタム上位5</a></td><td class='pos'>+3.9%</td><td>0.0%</td><td>3.91</td><td>-</td><td>-</td><td>0</td><td class='pos'>+2.9pt</td></tr><tr class="bench"><td>2</td><td><span class="grade gS">S</span></td><td class='l name'><a href='methods.html#m1'>日経225放置</a></td><td class='pos'>+1.0%</td><td>0.0%</td><td>0.97</td><td>-</td><td>-</td><td>0</td><td class=''>+0.0pt</td></tr><tr><td>3</td><td><span class="grade gA">A</span></td><td class='l name'><a href='methods.html#m2'>ゴールデンクロス</a></td><td class='pos'>+0.7%</td><td>0.0%</td><td>0.73</td><td>-</td><td>-</td><td>0</td><td class='neg'>-0.2pt</td></tr><tr><td>4</td><td><span class="grade gA">A</span></td><td class='l name'><a href='methods.html#m7'>20日高値ブレイク</a></td><td class='pos'>+0.3%</td><td>0.0%</td><td>0.31</td><td>-</td><td>-</td><td>0</td><td class='neg'>-0.7pt</td></tr><tr><td>5</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m8'>MACDクロス（0ライン上）</a></td><td class='pos'>+0.2%</td><td>0.0%</td><td>0.21</td><td>-</td><td>-</td><td>0</td><td class='neg'>-0.8pt</td></tr><tr><td>6</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m9'>一目均衡表 三役好転</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>6</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m11'>ストキャス売られすぎクロス</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>6</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m14'>決算後ドリフト</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>6</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m16'>52週高値更新</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>10</td><td><span class="grade gD">D</span></td><td class='l name'><a href='methods.html#m19'>前日高値ブレイク</a></td><td class='neg'>-0.3%</td><td>-0.3%</td><td>0.00</td><td>0%</td><td>0.00</td><td>1</td><td class='neg'>-1.2pt</td></tr></table></div><p class="note">太字は比べる基準の「日経225放置」。点数＝リターン÷最大下落（下落は最低1%として計算）。</p></div>
+<h2>予選</h2>
+<p class="lead">月に1回、前月の成績で予選の上位が本戦の下位と入れ替わります（最大2手法）。</p>
+<div class="tabs" data-group="lg_qualifier"><button data-key="1m" class=on>直近1か月</button><button data-key="all">通算</button></div><div data-pane="lg_qualifier" data-key="1m"><div class="tbl"><table><tr><th>順位</th><th>格付け</th><th class=l>手法</th><th>リターン</th><th>最大下落</th><th>点数</th><th>勝率</th><th>PF</th><th>決済数</th><th>日経225放置との差</th></tr><tr><td>1</td><td><span class="grade gS">S</span></td><td class='l name'><a href='methods.html#m5'>ボリンジャー-2σ逆張り</a></td><td class='pos'>+0.5%</td><td>0.0%</td><td>0.49</td><td>-</td><td>-</td><td>0</td><td class='neg'>-0.5pt</td></tr><tr><td>2</td><td><span class="grade gS">S</span></td><td class='l name'><a href='methods.html#m12'>出来高急増の陽線</a></td><td class='pos'>+0.3%</td><td>0.0%</td><td>0.25</td><td>-</td><td>-</td><td>0</td><td class='neg'>-0.7pt</td></tr><tr><td>3</td><td><span class="grade gA">A</span></td><td class='l name'><a href='methods.html#m3'>パーフェクトオーダー押し目</a></td><td class='pos'>+0.2%</td><td>0.0%</td><td>0.16</td><td>-</td><td>-</td><td>0</td><td class='neg'>-0.8pt</td></tr><tr><td>4</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m6'>スクイーズブレイク</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>4</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m13'>ギャップアップ継続</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>4</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m20'>ギャップダウン窓埋め</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>4</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m26'>モメンタム上位5（値動き調整）</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>4</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m27'>海外投資家フォロー</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>9</td><td><span class="grade gC">C</span></td><td class='l name'><a href='methods.html#m17'>寄り付きレンジブレイク（ORB）</a></td><td class='neg'>-0.4%</td><td>-0.4%</td><td>0.00</td><td>40%</td><td>0.60</td><td>5</td><td class='neg'>-1.4pt</td></tr><tr><td>10</td><td><span class="grade gD">D</span></td><td class='l name'><a href='methods.html#m10'>乖離率リバウンド</a></td><td class='neg'>-0.5%</td><td>-0.5%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.4pt</td></tr><tr><td>11</td><td><span class="grade gD">D</span></td><td class='l name'><a href='methods.html#m18'>VWAP押し目買い</a></td><td class='neg'>-0.6%</td><td>-0.6%</td><td>-0.01</td><td>33%</td><td>0.04</td><td>3</td><td class='neg'>-1.6pt</td></tr><tr><td>12</td><td><span class="grade gD">D</span></td><td class='l name'><a href='methods.html#m4'>RSI逆張り（上昇トレンド限定）</a></td><td class='neg'>-0.6%</td><td>-0.6%</td><td>-0.01</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.6pt</td></tr></table></div><p class="note">太字は比べる基準の「日経225放置」。点数＝リターン÷最大下落（下落は最低1%として計算）。</p></div><div data-pane="lg_qualifier" data-key="all" hidden><div class="tbl"><table><tr><th>順位</th><th>格付け</th><th class=l>手法</th><th>リターン</th><th>最大下落</th><th>点数</th><th>勝率</th><th>PF</th><th>決済数</th><th>日経225放置との差</th></tr><tr><td>1</td><td><span class="grade gS">S</span></td><td class='l name'><a href='methods.html#m5'>ボリンジャー-2σ逆張り</a></td><td class='pos'>+0.5%</td><td>0.0%</td><td>0.49</td><td>-</td><td>-</td><td>0</td><td class='neg'>-0.5pt</td></tr><tr><td>2</td><td><span class="grade gS">S</span></td><td class='l name'><a href='methods.html#m12'>出来高急増の陽線</a></td><td class='pos'>+0.3%</td><td>0.0%</td><td>0.25</td><td>-</td><td>-</td><td>0</td><td class='neg'>-0.7pt</td></tr><tr><td>3</td><td><span class="grade gA">A</span></td><td class='l name'><a href='methods.html#m3'>パーフェクトオーダー押し目</a></td><td class='pos'>+0.2%</td><td>0.0%</td><td>0.16</td><td>-</td><td>-</td><td>0</td><td class='neg'>-0.8pt</td></tr><tr><td>4</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m6'>スクイーズブレイク</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>4</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m13'>ギャップアップ継続</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>4</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m20'>ギャップダウン窓埋め</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>4</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m26'>モメンタム上位5（値動き調整）</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>4</td><td><span class="grade gB">B</span></td><td class='l name'><a href='methods.html#m27'>海外投資家フォロー</a></td><td class=''>+0.0%</td><td>0.0%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.0pt</td></tr><tr><td>9</td><td><span class="grade gC">C</span></td><td class='l name'><a href='methods.html#m17'>寄り付きレンジブレイク（ORB）</a></td><td class='neg'>-0.4%</td><td>-0.4%</td><td>0.00</td><td>40%</td><td>0.60</td><td>5</td><td class='neg'>-1.4pt</td></tr><tr><td>10</td><td><span class="grade gD">D</span></td><td class='l name'><a href='methods.html#m10'>乖離率リバウンド</a></td><td class='neg'>-0.5%</td><td>-0.5%</td><td>0.00</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.4pt</td></tr><tr><td>11</td><td><span class="grade gD">D</span></td><td class='l name'><a href='methods.html#m18'>VWAP押し目買い</a></td><td class='neg'>-0.6%</td><td>-0.6%</td><td>-0.01</td><td>33%</td><td>0.04</td><td>3</td><td class='neg'>-1.6pt</td></tr><tr><td>12</td><td><span class="grade gD">D</span></td><td class='l name'><a href='methods.html#m4'>RSI逆張り（上昇トレンド限定）</a></td><td class='neg'>-0.6%</td><td>-0.6%</td><td>-0.01</td><td>-</td><td>-</td><td>0</td><td class='neg'>-1.6pt</td></tr></table></div><p class="note">太字は比べる基準の「日経225放置」。点数＝リターン÷最大下落（下落は最低1%として計算）。</p></div>
+<h2>本戦の順位と資産の推移</h2><img class="chart" src="assets/chart.png" alt="本戦の順位推移と資産推移のグラフ">
+<h2>本戦と予選の入れ替え</h2><ul><li>2026-11-09：前日高値ブレイクが本戦へ、が予選へ（フォワード開始直後（約定前）に、その時点の採用銘柄での10年過去検証の点数で本戦を組み直し）</li><li>2026-11-09：52週高値更新が本戦へ、が予選へ（フォワード開始直後（約定前）に、その時点の採用銘柄での10年過去検証の点数で本戦を組み直し）</li><li>2026-11-09：決算後ドリフトが本戦へ、が予選へ（フォワード開始直後（約定前）に、その時点の採用銘柄での10年過去検証の点数で本戦を組み直し）</li><li>2026-11-09：ストキャス売られすぎクロスが本戦へ、が予選へ（フォワード開始直後（約定前）に、その時点の採用銘柄での10年過去検証の点数で本戦を組み直し）</li><li>2026-11-09：MACDクロス（0ライン上）が本戦へ、が予選へ（フォワード開始直後（約定前）に、その時点の採用銘柄での10年過去検証の点数で本戦を組み直し）</li><li>2026-11-09：が本戦へ、寄り付きレンジブレイク（ORB）が予選へ（フォワード開始直後（約定前）に、その時点の採用銘柄での10年過去検証の点数で本戦を組み直し）</li></ul>
+<div class="note">格付けS〜Dは、同じリーグ内での相対順位を上から20%ずつ区切ったものです。リターンがマイナスの手法はBより上になりません。
+始まったばかりの時期は、偶然の影響がとても大きい数字です。</div>
+
+<footer><p>仮想資金（各手法100万円）での検証記録です。実際の売買は一切していません。特定の銘柄や手法の売買をすすめるものではありません。過去の成績は将来の成績を約束しません。</p><p>最終更新：2026-11-10 02:30（平日の大引け後に自動で更新）</p></footer>
+</div>
+<script>
+document.querySelectorAll('.tabs').forEach(function(t){
+  var group=t.dataset.group;
+  t.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click',function(){
+      t.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
+      document.querySelectorAll('[data-pane="'+group+'"]').forEach(function(p){p.hidden=p.dataset.key!==b.dataset.key});
+    });
+  });
+});
+</script>
+</body></html>
